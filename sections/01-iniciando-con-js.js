@@ -1,6 +1,6 @@
 // alert("Hello world");
 let numeroSecreto = 5;
-let numeroUsuario = prompt("Me indicas un número entre el 1 y 10 por favor: ");
+let numeroUsuario = prompt("Me indicas un número por favor: ");
 let nombreUsuario = "Lua"
 let edadUsuario = 25;
 let numeroVentas = 50;
@@ -17,9 +17,6 @@ edadUsuario = prompt('Digite su edad: ');
 
 if (numeroUsuario == numeroSecreto) {
   alert('Felicidades!! Acestaste el número');
-}else{
-  // No se cumplio la condicion
-  alert('Lo siento, no acertaste el número!');
 }
 
 if (edadUsuario>= 18) {
