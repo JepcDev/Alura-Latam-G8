@@ -24,6 +24,7 @@ function verificarIntento(){
   return;
 }
 
+
 function generarNumeroScreto() {
   return Math.floor(Math.random()*10)+1;
   // return numeroSecreto;
