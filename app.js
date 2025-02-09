@@ -25,6 +25,7 @@ function verificarIntento(){
 
   if (numeroDeUsuario === numeroSecreto) {
     asignarTextoElemento('p', `Acertaste el número ${intentos} ${(intentos ===1) ? 'vez': 'veces'}`);
+    document.getElementById('reiniciar').removeAttribute('disable');
   }else{
     if (numeroDeUsuario>numeroSecreto) {
       asignarTextoElemento('p', 'El número secreto es menor');
@@ -32,11 +33,18 @@ function verificarIntento(){
       asignarTextoElemento('p', 'El número secreto es mayor');
     }
     intentos++;
+    limpiarCaja();
   }
 
   return;
 }
 
+// Limpia la caja del input despues de no acertar o terminarse los intentos del numero secreto
+function limpiarCaja() {
+  // let valorCaja = document.querySelector('#valorUsuario');
+  document.querySelector('#valorUsuario').value = '';
+  // valorCaja.value = '';
+}
 
 function generarNumeroScreto() {
   return Math.floor(Math.random()*10)+1;
