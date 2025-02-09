@@ -1,5 +1,4 @@
 
-
 // let titulo = document.querySelector('h1');
 // titulo.innerHTML = 'Juego del número secreto';
 
@@ -7,6 +6,7 @@
 // parrafo.innerHTML = 'Indica un número del 1 al 10';
 
 let numeroSecreto = generarNumeroScreto();
+let intentos = 1;
 
 function asignarTextoElemento(elemento, texto) {
   // let titulo = document.querySelector('h1');
@@ -21,16 +21,17 @@ function verificarIntento(){
   let numeroDeUsuario = parseInt(document.getElementById('valorUsuario').value);
   // console.log(typeof(numeroDeUsuario));
   // console.log(numeroDeUsuario === numeroSecreto);
-  // console.log(numeroSecreto);
+  console.log(numeroSecreto);
 
   if (numeroDeUsuario === numeroSecreto) {
-    asignarTextoElemento('p', 'Acertaste el número');
+    asignarTextoElemento('p', `Acertaste el número ${intentos} ${(intentos ===1) ? 'vez': 'veces'}`);
   }else{
     if (numeroDeUsuario>numeroSecreto) {
       asignarTextoElemento('p', 'El número secreto es menor');
     }else{
       asignarTextoElemento('p', 'El número secreto es mayor');
     }
+    intentos++;
   }
 
   return;
@@ -43,4 +44,4 @@ function generarNumeroScreto() {
 }
 
 asignarTextoElemento('h1','Juego del número secreto');
-asignarTextoElemento('p','Indica un número del 1 al 100');
+asignarTextoElemento('p','Indica un número del 1 al 10');
