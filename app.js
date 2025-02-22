@@ -27,17 +27,28 @@ function verificarIntento(){
   // console.log(numeroDeUsuario === numeroSecreto);
   console.log(numeroSecreto);
 
-  if (numeroDeUsuario === numeroSecreto) {
-    asignarTextoElemento('p', `Acertaste el número ${intentos} ${(intentos ===1) ? 'vez': 'veces'}`);
-    document.getElementById('reiniciar').removeAttribute('disabled');
-  }else{
-    if (numeroDeUsuario>numeroSecreto) {
-      asignarTextoElemento('p', 'El número secreto es menor');
+  if (maximoIntentos>0) {
+    console.log(maximoIntentos);
+    if (numeroDeUsuario === numeroSecreto) {
+      asignarTextoElemento('p', `Acertaste el número ${intentos} ${(intentos ===1) ? 'vez': 'veces'}`);
+      document.getElementById('reiniciar').removeAttribute('disabled');
+      maximoIntentos=3;
     }else{
-      asignarTextoElemento('p', 'El número secreto es mayor');
+      if (numeroDeUsuario>numeroSecreto) {
+        asignarTextoElemento('p', 'El número secreto es menor');
+        maximoIntentos--;
+      }else{
+        asignarTextoElemento('p', 'El número secreto es mayor');
+        maximoIntentos--;
+      }
+      intentos++;
+      limpiarCaja();
     }
-    intentos++;
-    limpiarCaja();
+  }else{
+    asignarTextoElemento('p','Se agoto el maximo de intentos posibles');
+    document.getElementById('reiniciar').removeAttribute('disabled');
+    document.querySelector('#intentar').setAttribute('disabled','true');
+    maximoIntentos=3;
   }
 
   return;
@@ -90,6 +101,7 @@ function reiniciarJuego() {
   condicionesIniciales();
   // Desabilitar el bóton de nuevo Juego
   document.querySelector('#reiniciar').setAttribute('disabled','true');
+  document.getElementById('intentar').removeAttribute('disabled');
 }
 
 condicionesIniciales();
