@@ -32,6 +32,7 @@ function verificarIntento(){
     if (numeroDeUsuario === numeroSecreto) {
       asignarTextoElemento('p', `Acertaste el número ${intentos} ${(intentos ===1) ? 'vez': 'veces'}`);
       document.getElementById('reiniciar').removeAttribute('disabled');
+      document.getElementById('intentar').setAttribute('disabled','true');
       maximoIntentos=3;
     }else{
       if (numeroDeUsuario>numeroSecreto) {
